@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Manipulation</title>
+</head>
+<body>
+    <h2>Js HTML Dom</h2>
+    <p id="intro">Finding Html Element by Id</p>
+    <p>This demonstrates the <b>getElementById</b>Method</p>
+    <p id="demo"></p>
+    <hr>
+    <h1>Finding HTML element by tag</h1>
+    <p id="demo1"></p>
+    <hr>
+    <h1>Selecting the HTML by ClassName</h1>
+    <p class ="intro">Hello World</p>
+    <p class="intro">This demonstrate the <b>getelementby classname</b>method</p>
+    <p id="demo3"></p>
+    <hr>
+    <h1>Finding HTML element by Query Selector</h1>
+    <p class="demo4"></p>
+    <hr>
+    <h1>Finding HTML element by Query Selector All</h1>
+    <p class="intro1">one</p>
+    <p class="intro1">two</p>
+</body>
+<script>
+    const element = document.getElementById("intro");
+    document.getElementById("demo").innerHTML = "The text of the paragraph is: " + element.innerHTML;
+    const element2 = document.getElementsByTagName("p");
+    document.getElementById("demo1").innerHTML = "The text of the paragraph is: " + element2[0].innerHTML;
+    const element3 = document.getElementsByClassName("intro");
+    document.getElementById("demo3").innerHTML = "The text of the paragraph is: " + element3[1].innerHTML;
+    const element4 = document.querySelector(".demo4");
+    element4.innerHTML = "Hello Dear";
+    const element5 = document.querySelectorAll(".intro1");
+    element5[0].innerHTML = "Hello";
+</script>
+</html>
