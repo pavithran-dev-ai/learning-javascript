@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Events</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            padding: 16px;
+            border: 2px solid grey;
+        }
+    </style>
+</head>
+<body>
+    <h3>Mouse Events</h3>
+    <p>It happens when the user interact with the mouse</p>
+    <div class="list">
+        <ol>
+            <li>click</li>
+            <li>dblclick</li>
+            <li>mousedown</li>
+            <li>mouseup</li>
+            <li>mouseover</li>
+            <li>mousemove</li>
+            <li>mouseout</li>
+        </ol>
+    </div>
+    <div id="box">Move Mouse Over This Box</div>
+</body>
+<script>
+    const box = document.getElementById("box");
+    //let the box listen for the mouse over
+    box.addEventListener("mouseover", function() {
+        box.innerHTML = "Mouse Over Event";
+    });
+    //let the box listen for the mouse out
+    box.addEventListener("mouseout", function() {
+        box.innerHTML = "Mouse Out Event";
+    });
+</script>
+</html>
