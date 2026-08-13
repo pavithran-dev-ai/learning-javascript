@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management Remove</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>JavaScript Events</h1>
+<h2>Adding and Removing Events</h2>
+
+<button id="add">Add</button>
+<button id="remove">Remove</button>
+<button id="test">Test click</button>
+<p id="event"></p>
+</div>
+</body>
+<script>
+const test = document.getElementById("test");
+const remove = document.getElementById("remove");
+const add = document.getElementById("add");
+
+function myFunction() {
+  document.getElementById("event").innerHTML += "Welcome!";
+}
+
+// Let add listen for click
+add.addEventListener("click", function () {
+  // Let test listen for click
+  test.addEventListener("click", myFunction);
+});
+
+// Let remove listen for click
+remove.addEventListener("click", function () {
+  // Prevent test listen for click
+  test.removeEventListener("click", myFunction);
+});
+</script>
+</body>
+</html>

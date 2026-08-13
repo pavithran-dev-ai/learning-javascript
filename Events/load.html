@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>load Event</title>
+</head>
+<body>
+    <h2>Load Events</h2>
+    <p>It Happens when the browser has finished loading an Element<br>The DOMContentLoaded event is best for initializing the user interface<br>The load event is best for actions that require all resources available, such as getting the dimensions of an image or checking the browser type.</p>
+    <ul>
+        <li>DOMContentLoaded(when HTML is Ready)</li>
+        <li>load(Waits for pages,images,css,etc.)</li>
+    </ul>
+    <p id="demo"></p>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("demo").innerHTML = "DOM is ready!";
+    });
+    
+</script>
+</html>
