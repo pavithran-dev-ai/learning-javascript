@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Your Name | Portfolio</title>
+
+    <style>
+        /* =========================
+           RESET & GLOBAL STYLES
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", "Segoe UI", Arial, sans-serif;
+            background: #f7f8fc;
+            color: #1d2433;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* =========================
+           MAIN HERO / SPLIT SCREEN
+        ========================== */
+
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 55% 45%;
+            overflow: hidden;
+        }
+
+        /* =========================
+           LEFT SIDE
+        ========================== */
+
+        .left-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 70px 10%;
+            background: #ffffff;
+        }
+
+        .intro {
+            max-width: 650px;
+        }
+
+        .small-text {
+            color: #667085;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .intro h1 {
+            font-size: clamp(3rem, 6vw, 5.8rem);
+            line-height: 1.05;
+            font-weight: 800;
+            letter-spacing: -3px;
+            margin-bottom: 25px;
+        }
+
+        .intro h1 span {
+            color: #635bff;
+        }
+
+        .intro-description {
+            max-width: 550px;
+            color: #667085;
+            font-size: 1.15rem;
+            margin-bottom: 40px;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================== */
+
+        .navigation {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .navigation a {
+            padding: 12px 22px;
+            border: 1px solid #d9dce5;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        .navigation a:hover {
+            background: #635bff;
+            color: #fff;
+            border-color: #635bff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(99, 91, 255, 0.2);
+        }
+
+        /* =========================
+           RIGHT SIDE
+        ========================== */
+
+        .right-panel {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #635bff;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Decorative circles */
+
+        .right-panel::before {
+            content: "";
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+
+        .right-panel::after {
+            content: "";
+            position: absolute;
+            width: 650px;
+            height: 650px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 50%;
+        }
+
+        /* =========================
+           PROFILE IMAGE
+        ========================== */
+
+        .profile-wrapper {
+            position: relative;
+            z-index: 2;
+            width: min(380px, 65%);
+            aspect-ratio: 0.78;
+            padding: 10px;
+
+            /* Distinctive oval frame */
+            border-radius: 50% / 42%;
+            background: linear-gradient(
+                145deg,
+                #ffffff,
+                rgba(255, 255, 255, 0.35)
+            );
+
+            box-shadow:
+                0 30px 70px rgba(28, 22, 90, 0.35),
+                inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50% / 42%;
+            border: 8px solid #635bff;
+            background: #e9e9f4;
+        }
+
+        /* =========================
+           CONTENT SECTIONS
+        ========================== */
+
+        .content-section {
+            padding: 100px 10%;
+            background: #f7f8fc;
+        }
+
+        .content-section:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .section-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            color: #635bff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .content-section h2 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            margin-bottom: 45px;
+            line-height: 1.1;
+        }
+
+        /* =========================
+           SKILLS
+        ========================== */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: #ffffff;
+            border: 1px solid #e5e7ef;
+            padding: 30px;
+            border-radius: 20px;
+            transition: 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(30, 35, 60, 0.08);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .skill-card p {
+            color: #667085;
+        }
+
+        /* =========================
+           PROJECTS
+        ========================== */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid #e5e7ef;
+            transition: 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(30, 35, 60, 0.08);
+        }
+
+        .project-number {
+            color: #635bff;
+            font-weight: 800;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: #667085;
+            margin-bottom: 20px;
+        }
+
+        .project-link {
+            color: #635bff;
+            font-weight: 700;
+        }
+
+        /* =========================
+           EDUCATION
+        ========================== */
+
+        .education-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .education-item {
+            padding: 30px;
+            background: #ffffff;
+            border-left: 5px solid #635bff;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(30, 35, 60, 0.05);
+        }
+
+        .education-item .year {
+            color: #635bff;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .education-item h3 {
+            margin-bottom: 5px;
+        }
+
+        .education-item p {
+            color: #667085;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #111827;
+            color: #aeb5c2;
+            font-size: 0.9rem;
+        }
+
+        /* =========================
+           ACTIVE NAVIGATION
+        ========================== */
+
+        .navigation a.active {
+            background: #635bff;
+            color: white;
+            border-color: #635bff;
+        }
+
+        /* =========================
+           RESPONSIVE TABLET
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .left-panel {
+                min-height: 60vh;
+                padding: 70px 8%;
+            }
+
+            .right-panel {
+                min-height: 65vh;
+                padding: 70px 0;
+            }
+
+            .profile-wrapper {
+                width: min(330px, 60%);
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* =========================
+           RESPONSIVE MOBILE
+        ========================== */
+
+        @media (max-width: 600px) {
+
+            .left-panel {
+                padding: 60px 25px;
+            }
+
+            .intro h1 {
+                font-size: 3.1rem;
+                letter-spacing: -2px;
+            }
+
+            .intro-description {
+                font-size: 1rem;
+            }
+
+            .navigation {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navigation a {
+                width: 100%;
+                text-align: center;
+            }
+
+            .right-panel {
+                min-height: 500px;
+            }
+
+            .profile-wrapper {
+                width: 70%;
+            }
+
+            .content-section {
+                padding: 70px 25px;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-section h2 {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+
+    <main class="hero">
+
+        <!-- LEFT SIDE -->
+        <section class="left-panel">
+
+            <div class="intro">
+
+                <p class="small-text">Welcome to my portfolio</p>
+
+                <h1>
+                    Hi, I am
+                    <span>Your Name</span>
+                </h1>
+
+                <p class="intro-description">
+                    I am a passionate web developer who enjoys creating
+                    modern, responsive and user-friendly digital experiences.
+                    Welcome to my portfolio.
+                </p>
+
+                <!-- NAVIGATION -->
+                <nav class="navigation" aria-label="Main navigation">
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#education">Education</a>
+                </nav>
+
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT SIDE -->
+        <section class="right-panel">
+
+            <div class="profile-wrapper">
+
+                <!--
+                    Replace this URL with your own image.
+
+                    Example:
+                    src="images/profile.jpg"
+                -->
+                <img
+                    class="profile-image"
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=80"
+                    alt="Profile photo of Your Name"
+                >
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         SKILLS
+    ========================== -->
+
+    <section id="skills" class="content-section">
+
+        <div class="section-container">
+
+            <p class="section-label">01 — Skills</p>
+
+            <h2>What I work with</h2>
+
+            <div class="skills-grid">
+
+                <article class="skill-card">
+                    <h3>HTML & CSS</h3>
+                    <p>
+                        Creating semantic HTML structures and responsive
+                        layouts with modern CSS.
+                    </p>
+                </article>
+
+                <article class="skill-card">
+                    <h3>JavaScript</h3>
+                    <p>
+                        Building interactive and dynamic web experiences
+                        using modern JavaScript.
+                    </p>
+                </article>
+
+                <article class="skill-card">
+                    <h3>React</h3>
+                    <p>
+                        Developing reusable and scalable user interfaces
+                        with React.
+                    </p>
+                </article>
+
+                <article class="skill-card">
+                    <h3>Responsive Design</h3>
+                    <p>
+                        Designing websites that work beautifully across
+                        phones, tablets and desktops.
+                    </p>
+                </article>
+
+                <article class="skill-card">
+                    <h3>UI/UX</h3>
+                    <p>
+                        Creating clean interfaces with a strong focus on
+                        usability and accessibility.
+                    </p>
+                </article>
+
+                <article class="skill-card">
+                    <h3>Git & GitHub</h3>
+                    <p>
+                        Managing source code and collaborating on projects
+                        using Git and GitHub.
+                    </p>
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROJECTS
+    ========================== -->
+
+    <section id="projects" class="content-section">
+
+        <div class="section-container">
+
+            <p class="section-label">02 — Projects</p>
+
+            <h2>Things I've built</h2>
+
+            <div class="projects-grid">
+
+                <article class="project-card">
+
+                    <p class="project-number">PROJECT 01</p>
+
+                    <h3>Portfolio Website</h3>
+
+                    <p>
+                        A responsive personal portfolio website designed
+                        to showcase my skills, projects and experience.
+                    </p>
+
+                    <a href="#" class="project-link">
+                        View Project →
+                    </a>
+
+                </article>
+
+
+                <article class="project-card">
+
+                    <p class="project-number">PROJECT 02</p>
+
+                    <h3>Task Management App</h3>
+
+                    <p>
+                        A simple productivity application for creating,
+                        organizing and tracking daily tasks.
+                    </p>
+
+                    <a href="#" class="project-link">
+                        View Project →
+                    </a>
+
+                </article>
+
+
+                <article class="project-card">
+
+                    <p class="project-number">PROJECT 03</p>
+
+                    <h3>E-Commerce Website</h3>
+
+                    <p>
+                        A modern shopping interface with product browsing,
+                        filtering and responsive layouts.
+                    </p>
+
+                    <a href="#" class="project-link">
+                        View Project →
+                    </a>
+
+                </article>
+
+
+                <article class="project-card">
+
+                    <p class="project-number">PROJECT 04</p>
+
+                    <h3>Weather Dashboard</h3>
+
+                    <p>
+                        A weather dashboard displaying location-based
+                        weather information through an API.
+                    </p>
+
+                    <a href="#" class="project-link">
+                        View Project →
+                    </a>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EDUCATION
+    ========================== -->
+
+    <section id="education" class="content-section">
+
+        <div class="section-container">
+
+            <p class="section-label">03 — Education</p>
+
+            <h2>My education</h2>
+
+            <div class="education-list">
+
+                <article class="education-item">
+
+                    <p class="year">2022 — 2026</p>
+
+                    <h3>Bachelor's Degree</h3>
+
+                    <p>
+                        Your University Name — Your Degree / Major
+                    </p>
+
+                </article>
+
+
+                <article class="education-item">
+
+                    <p class="year">2020 — 2022</p>
+
+                    <h3>Higher Secondary Education</h3>
+
+                    <p>
+                        Your School Name — Science / Computer Science
+                    </p>
+
+                </article>
+
+
+                <article class="education-item">
+
+                    <p class="year">2019 — 2020</p>
+
+                    <h3>Secondary Education</h3>
+
+                    <p>
+                        Your School Name
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+        <p>
+            © <span id="currentYear"></span> Your Name. All rights reserved.
+        </p>
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        // Automatically update the copyright year
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+
+        // Highlight the navigation item corresponding
+        // to the section currently visible on screen
+
+        const sections = document.querySelectorAll(
+            ".content-section"
+        );
+
+        const navLinks = document.querySelectorAll(
+            ".navigation a"
+        );
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+
+                        navLinks.forEach((link) => {
+                            link.classList.remove("active");
+                        });
+
+                        const activeLink =
+                            document.querySelector(
+                                `.navigation a[href="#${entry.target.id}"]`
+                            );
+
+                        if (activeLink) {
+                            activeLink.classList.add("active");
+                        }
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.35
+            }
+        );
+
+
+        sections.forEach((section) => {
+            observer.observe(section);
+        });
+
+
+        // Smooth scrolling with a small offset
+
+        navLinks.forEach((link) => {
+
+            link.addEventListener("click", function (event) {
+
+                event.preventDefault();
+
+                const targetId =
+                    this.getAttribute("href");
+
+                const target =
+                    document.querySelector(targetId);
+
+                if (target) {
+
+                    const offset = 20;
+
+                    const targetPosition =
+                        target.getBoundingClientRect().top +
+                        window.scrollY -
+                        offset;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: "smooth"
+                    });
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
